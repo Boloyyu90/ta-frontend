@@ -3,9 +3,74 @@
 @tailwind utilities;
 
 @layer base {
-    /* Reset & Base Styles */
+    :root {
+        /* Background colors */
+        --background: 0 0% 100%;
+        --foreground: 224 71% 4%;
+
+        /* Card colors */
+        --card: 0 0% 100%;
+        --card-foreground: 224 71% 4%;
+
+        /* Popover colors */
+        --popover: 0 0% 100%;
+        --popover-foreground: 224 71% 4%;
+
+        /* Primary (Teal Blue #327498) */
+        --primary: 200 50% 39%;
+        --primary-foreground: 210 40% 98%;
+
+        /* Secondary (Warm Orange #F0A243) */
+        --secondary: 34 84% 60%;
+        --secondary-foreground: 222 47% 11%;
+
+        /* Muted */
+        --muted: 220 14% 96%;
+        --muted-foreground: 220 9% 46%;
+
+        /* Accent */
+        --accent: 220 14% 96%;
+        --accent-foreground: 220 9% 46%;
+
+        /* Destructive (Error) */
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 210 40% 98%;
+
+        /* Border & Input */
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 200 50% 39%;
+
+        /* Radius */
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 224 71% 4%;
+        --foreground: 213 31% 91%;
+        --card: 224 71% 4%;
+        --card-foreground: 213 31% 91%;
+        --popover: 224 71% 4%;
+        --popover-foreground: 213 31% 91%;
+        --primary: 200 50% 39%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 34 84% 60%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 223 47% 11%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 216 34% 17%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 216 34% 17%;
+        --input: 216 34% 17%;
+        --ring: 200 50% 39%;
+    }
+}
+
+@layer base {
     * {
-        @apply border-gray-200;
+        @apply border-border;
     }
 
     html {
@@ -13,202 +78,78 @@
     }
 
     body {
-        @apply bg-gray-50 text-gray-900 antialiased;
-        @apply font-poppins font-normal;
+        @apply bg-background text-foreground antialiased;
+        @apply font-poppins;
     }
 
     /* Heading Hierarchy */
     h1 {
-        @apply text-4xl font-bold text-gray-900;
-        @apply tracking-tight leading-tight;
+        @apply text-4xl font-bold text-foreground tracking-tight leading-tight;
     }
-
     h2 {
-        @apply text-3xl font-semibold text-gray-900;
-        @apply tracking-tight;
+        @apply text-3xl font-semibold text-foreground tracking-tight;
     }
-
     h3 {
-        @apply text-2xl font-semibold text-gray-800;
+        @apply text-2xl font-semibold;
     }
-
     h4 {
-        @apply text-xl font-medium text-gray-800;
+        @apply text-xl font-medium;
     }
-
     h5 {
-        @apply text-lg font-medium text-gray-700;
+        @apply text-lg font-medium;
     }
-
     h6 {
-        @apply text-base font-medium text-gray-700;
+        @apply text-base font-medium;
     }
 
-    /* Paragraph & Text */
+    /* Paragraph */
     p {
-        @apply text-base text-gray-600 leading-relaxed;
+        @apply text-base leading-relaxed;
     }
 
     /* Links */
     a {
-        @apply text-primary-600 hover:text-primary-700 transition-colors;
-        @apply underline-offset-2;
+        @apply text-primary hover:text-primary/80 transition-colors underline-offset-2;
     }
 
     /* Selection */
     ::selection {
-        @apply bg-primary-200 text-primary-900;
+        @apply bg-primary/20 text-primary;
     }
 
-    /* Focus Outline */
+    /* Focus */
     :focus-visible {
-        @apply outline-2 outline-offset-2 outline-primary-500;
+        @apply outline-2 outline-offset-2 outline-primary;
     }
 
-    /* Scrollbar Styling (Webkit) */
+    /* Scrollbar */
     ::-webkit-scrollbar {
         @apply w-2;
     }
-
     ::-webkit-scrollbar-track {
-        @apply bg-gray-100;
+        @apply bg-muted;
     }
-
     ::-webkit-scrollbar-thumb {
-        @apply bg-gray-300 rounded-full;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray-400;
-    }
-}
-
-@layer components {
-    /* Custom Component Classes */
-
-    /* Button Variants */
-    .btn-primary {
-        @apply bg-primary-500 text-white font-medium;
-        @apply px-4 py-2 rounded-md;
-        @apply hover:bg-primary-600 active:bg-primary-700;
-        @apply transition-all duration-200;
-        @apply shadow-soft hover:shadow-card;
-        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-        @apply disabled:opacity-50 disabled:cursor-not-allowed;
-    }
-
-    .btn-secondary {
-        @apply bg-secondary-500 text-white font-medium;
-        @apply px-4 py-2 rounded-md;
-        @apply hover:bg-secondary-600 active:bg-secondary-700;
-        @apply transition-all duration-200;
-        @apply shadow-soft hover:shadow-card;
-        @apply focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
-        @apply disabled:opacity-50 disabled:cursor-not-allowed;
-    }
-
-    .btn-outline {
-        @apply border-2 border-primary-500 text-primary-600;
-        @apply px-4 py-2 rounded-md font-medium;
-        @apply hover:bg-primary-50 active:bg-primary-100;
-        @apply transition-all duration-200;
-        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-    }
-
-    /* Card Styles */
-    .card {
-        @apply bg-white rounded-lg shadow-card;
-        @apply p-6 border border-gray-100;
-        @apply hover:shadow-elevated transition-shadow duration-300;
-    }
-
-    .card-header {
-        @apply border-b border-gray-200 pb-4 mb-4;
-    }
-
-    /* Input Fields */
-    .input-field {
-        @apply w-full px-4 py-2.5 rounded-md;
-        @apply border border-gray-300 bg-white;
-        @apply text-gray-900 placeholder:text-gray-400;
-        @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-200;
-        @apply transition-all duration-200;
-        @apply disabled:bg-gray-100 disabled:cursor-not-allowed;
-    }
-
-    .input-error {
-        @apply border-error-500 focus:ring-error-200;
-    }
-
-    /* Labels */
-    .label {
-        @apply block text-sm font-medium text-gray-700 mb-1.5;
-    }
-
-    /* Badge/Tag */
-    .badge {
-        @apply inline-flex items-center px-2.5 py-0.5 rounded-full;
-        @apply text-xs font-medium;
-    }
-
-    .badge-primary {
-        @apply bg-primary-100 text-primary-700;
-    }
-
-    .badge-secondary {
-        @apply bg-secondary-100 text-secondary-700;
-    }
-
-    .badge-success {
-        @apply bg-success-100 text-success-700;
-    }
-
-    .badge-error {
-        @apply bg-error-100 text-error-700;
-    }
-
-    .badge-warning {
-        @apply bg-warning-100 text-warning-700;
-    }
-
-    /* Container */
-    .container-custom {
-        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-    }
-
-    /* Section Spacing */
-    .section {
-        @apply py-12 sm:py-16 lg:py-20;
+        @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
     }
 }
 
 @layer utilities {
-    /* Text Gradient */
+    /* Text gradient utilities */
     .text-gradient-primary {
-        @apply bg-gradient-to-r from-primary-600 to-primary-400;
-        @apply bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent;
     }
 
     .text-gradient-secondary {
-        @apply bg-gradient-to-r from-secondary-600 to-secondary-400;
-        @apply bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-secondary to-secondary/60 bg-clip-text text-transparent;
     }
 
-    /* Background Gradients */
+    /* Background gradients */
     .bg-gradient-primary {
-        @apply bg-gradient-to-br from-primary-500 to-primary-700;
+        @apply bg-gradient-to-br from-primary to-primary/80;
     }
 
     .bg-gradient-secondary {
-        @apply bg-gradient-to-br from-secondary-500 to-secondary-700;
-    }
-
-    /* Animations */
-    .animate-in {
-        @apply animate-fade-in;
-    }
-
-    .animate-up {
-        @apply animate-slide-up;
+        @apply bg-gradient-to-br from-secondary to-secondary/80;
     }
 }
