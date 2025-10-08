@@ -2,17 +2,213 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
 @layer base {
-  body {
-    @apply bg-gray-50 text-gray-900 antialiased;
-  }
+    /* Reset & Base Styles */
+    * {
+        @apply border-gray-200;
+    }
 
-  * {
-    @apply border-gray-200;
-  }
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-gray-50 text-gray-900 antialiased;
+        @apply font-poppins font-normal;
+    }
+
+    /* Heading Hierarchy */
+    h1 {
+        @apply text-4xl font-bold text-gray-900;
+        @apply tracking-tight leading-tight;
+    }
+
+    h2 {
+        @apply text-3xl font-semibold text-gray-900;
+        @apply tracking-tight;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold text-gray-800;
+    }
+
+    h4 {
+        @apply text-xl font-medium text-gray-800;
+    }
+
+    h5 {
+        @apply text-lg font-medium text-gray-700;
+    }
+
+    h6 {
+        @apply text-base font-medium text-gray-700;
+    }
+
+    /* Paragraph & Text */
+    p {
+        @apply text-base text-gray-600 leading-relaxed;
+    }
+
+    /* Links */
+    a {
+        @apply text-primary-600 hover:text-primary-700 transition-colors;
+        @apply underline-offset-2;
+    }
+
+    /* Selection */
+    ::selection {
+        @apply bg-primary-200 text-primary-900;
+    }
+
+    /* Focus Outline */
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-primary-500;
+    }
+
+    /* Scrollbar Styling (Webkit) */
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400;
+    }
 }
 
 @layer components {
-  /* Custom component classes nanti ditambahkan di sini */
+    /* Custom Component Classes */
+
+    /* Button Variants */
+    .btn-primary {
+        @apply bg-primary-500 text-white font-medium;
+        @apply px-4 py-2 rounded-md;
+        @apply hover:bg-primary-600 active:bg-primary-700;
+        @apply transition-all duration-200;
+        @apply shadow-soft hover:shadow-card;
+        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+        @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary-500 text-white font-medium;
+        @apply px-4 py-2 rounded-md;
+        @apply hover:bg-secondary-600 active:bg-secondary-700;
+        @apply transition-all duration-200;
+        @apply shadow-soft hover:shadow-card;
+        @apply focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+        @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-outline {
+        @apply border-2 border-primary-500 text-primary-600;
+        @apply px-4 py-2 rounded-md font-medium;
+        @apply hover:bg-primary-50 active:bg-primary-100;
+        @apply transition-all duration-200;
+        @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    }
+
+    /* Card Styles */
+    .card {
+        @apply bg-white rounded-lg shadow-card;
+        @apply p-6 border border-gray-100;
+        @apply hover:shadow-elevated transition-shadow duration-300;
+    }
+
+    .card-header {
+        @apply border-b border-gray-200 pb-4 mb-4;
+    }
+
+    /* Input Fields */
+    .input-field {
+        @apply w-full px-4 py-2.5 rounded-md;
+        @apply border border-gray-300 bg-white;
+        @apply text-gray-900 placeholder:text-gray-400;
+        @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-200;
+        @apply transition-all duration-200;
+        @apply disabled:bg-gray-100 disabled:cursor-not-allowed;
+    }
+
+    .input-error {
+        @apply border-error-500 focus:ring-error-200;
+    }
+
+    /* Labels */
+    .label {
+        @apply block text-sm font-medium text-gray-700 mb-1.5;
+    }
+
+    /* Badge/Tag */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full;
+        @apply text-xs font-medium;
+    }
+
+    .badge-primary {
+        @apply bg-primary-100 text-primary-700;
+    }
+
+    .badge-secondary {
+        @apply bg-secondary-100 text-secondary-700;
+    }
+
+    .badge-success {
+        @apply bg-success-100 text-success-700;
+    }
+
+    .badge-error {
+        @apply bg-error-100 text-error-700;
+    }
+
+    .badge-warning {
+        @apply bg-warning-100 text-warning-700;
+    }
+
+    /* Container */
+    .container-custom {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    /* Section Spacing */
+    .section {
+        @apply py-12 sm:py-16 lg:py-20;
+    }
+}
+
+@layer utilities {
+    /* Text Gradient */
+    .text-gradient-primary {
+        @apply bg-gradient-to-r from-primary-600 to-primary-400;
+        @apply bg-clip-text text-transparent;
+    }
+
+    .text-gradient-secondary {
+        @apply bg-gradient-to-r from-secondary-600 to-secondary-400;
+        @apply bg-clip-text text-transparent;
+    }
+
+    /* Background Gradients */
+    .bg-gradient-primary {
+        @apply bg-gradient-to-br from-primary-500 to-primary-700;
+    }
+
+    .bg-gradient-secondary {
+        @apply bg-gradient-to-br from-secondary-500 to-secondary-700;
+    }
+
+    /* Animations */
+    .animate-in {
+        @apply animate-fade-in;
+    }
+
+    .animate-up {
+        @apply animate-slide-up;
+    }
 }
